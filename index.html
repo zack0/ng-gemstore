@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="store">
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+	</head>
+	<body ng-controller="StoreController as store">
+		<h1>Gem Store</h1>
+	<div class="list-group">
+		<div class="list-group-item" ng-repeat="product in store.products | orderBy:'-price'">
+			
+			<h3>{{product.name}}</h3>
+			<em class="pull-right"> {{product.price | currency}} </em>
+			<img ng-src="{{product.images[0].thumb}}" />
+			
+			<button type="button" class="btn btn-primary" ng-show="product.canPurchase" ng-hide="product.soldOut"> Add to Cart </button>
+			<button type="button" class="btn btn-warning" ng-show="product.soldOut"> Backorder </button>
+			
+			<section ng-controller="PanelController as panel">
+				<ul class="nav nav-pills">
+					<li ng-class="{ active:isSelected(1) }">
+						<a href ng-click="panel.selectTab(1)">Description</a>
+					</li>
+					<li ng-class="{ active:isSelected(2) }">
+						<a href ng-click="panel.selectTab(2)">Specifications</a>
+					</li>
+					<li ng-class="{ active:isSelected(3) }">
+						<a href ng-click="panel.selectTab(3)">Reviews</a>
+					</li>
+				</ul>
+				
+				<div class="panel" ng-show="panel.isSelected(1)">
+					<h4>Description</h4>
+					<p>{{product.description}}</p>
+				</div>
+				<div class="panel" ng-show="panel.isSelected(2)">
+					<h4>Specifications</h4>
+					<p>{{product.specification}}</p>
+				</div>
+				<div class="panel" ng-show="panel.isSelected(3)">
+					<h4>Reviews</h4>
+					<blockquote ng-repeat="review in product.reviews">
+						<b>Stars: {{review.stars}}</b>
+						{{review.body}}
+						<cite>by: {{review.author}}</cite>
+					</blockquote>
+					<blockquote ng-repeat="review in product.reviews">
+						<form name="reviewForm">
+							<select>
+								<option value="1">1 star</option>
+								<option value="2">2 star</option>
+							</select>
+						</form>
+					</blockquote>
+				</div>
+			</section>
+
+		</div>
+	</div>
+
+		<script type="text/javascript" src="scripts/angular.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+	</body>
+</html>
