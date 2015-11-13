@@ -38,19 +38,37 @@
 				</div>
 				<div class="panel" ng-show="panel.isSelected(3)">
 					<h4>Reviews</h4>
+					
 					<blockquote ng-repeat="review in product.reviews">
 						<b>Stars: {{review.stars}}</b>
 						{{review.body}}
 						<cite>by: {{review.author}}</cite>
 					</blockquote>
-					<blockquote ng-repeat="review in product.reviews">
-						<form name="reviewForm">
-							<select>
-								<option value="1">1 star</option>
-								<option value="2">2 star</option>
+					
+						<form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+						<blockquote>
+						<b>Stars: {{reviewCtrl.review.stars}}</b>
+						{{reviewCtrl.review.body}}
+						<cite>by: {{reviewCtrl.review.author}}</cite>
+						</blockquote>
+
+						<fieldset class="form-group">
+							<select class="form-control" ng-options="stars for stars in [5,4,3,2,1]" ng-model="reviewCtrl.review.stars" title="Stars" required>
+								<option value="">Rate the Product</option>
 							</select>
+						</fieldset>
+						<fieldset class="form-group">
+							<textarea class="form-control" ng-model="reviewCtrl.review.body" placeholder="Write a short review of the product." required></textarea>
+						</fieldset>
+						<fieldset class="form-group">
+							<input class="form-control" ng-model="reviewCtrl.review.author" type="email" placeholder="email@email.com" title="Email" required />
+						</fieldset>
+						<fieldset class="form-group">
+							<div>reviewForm is {{reviewForm.$valid}}</div>
+							<input class="btn btn-primary pull-right" type="submit" value="Submit Review" />
+						</fieldset>
 						</form>
-					</blockquote>
+					
 				</div>
 			</section>
 
