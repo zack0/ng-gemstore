@@ -14,7 +14,8 @@
 				reviews: [{
 					stars: 5,
 					body: 'Such an amazing gem!',
-					author: 'email@email.com'
+					author: 'email@email.com',
+					createdOn: ''
 				}],
 				images: [
 					{
@@ -34,7 +35,8 @@
 					{
 					stars: 4,
 					body: 'Such a sharp gem!',
-					author:"email@email.com"
+					author:"email@email.com",
+					createdOn: ''
 					}
 				],
 				images: [
@@ -76,7 +78,8 @@
 					{
 					stars: 5,
 					body: 'Such a precious gem!',
-					author:"email@email.com"
+					author:"email@email.com",
+					createdOn: ''
 					}
 				],
 				images: [
@@ -96,12 +99,14 @@
 					{
 					stars: 5,
 				 	body: 'Such a precious super gem!',
-				 	author:"email@email.com"
+				 	author:"email@email.com",
+				 	createdOn: ''
 				 	},
 				 	{
 				 	stars: 5,
 				 	body: "Such an precious, precious gem!",
-				 	author: 'email1@email2.com'
+				 	author: 'email1@email2.com',
+				 	createdOn: ''
 				 	},
 				 	],
 				images: [
@@ -130,7 +135,15 @@
 
 		this.addReview = function(product) {
 			product.reviews.push(this.review);
+			product.reviews.push(this.review.createdOn = Date.now());
 			this.review = {};
+		};
+	});
+
+	app.directive('productTitle', function() {
+		return {
+			restrict: 'E',
+			templateUrl: 'product-title.html'
 		};
 	});
 
