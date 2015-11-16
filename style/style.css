@@ -5,3 +5,8 @@
 .ng-valid.ng-dirty {
 	border-color: #78FA89;
 }
+
+li.small-image {
+	width: 34px;
+	height: 34px;
+}

@@ -1,9 +1,61 @@
 (function(){
-	var app = angular.module('store', [ ]);
+	var app = angular.module('store', []);
 
 	app.controller('StoreController', function(){
-		// this.products = gems;
-		this.products = [
+		this.products = gems;
+
+	});
+
+	app.directive('productGallery', function() {
+		return {
+			restrict: 'E',
+			templateUrl: 'product-gallery.html',
+			controller: function() {
+				this.current = 0;
+				this.setCurrent = function(imageNumber) {
+					this.current = imageNumber || 0;
+				};
+			}, controllerAs: 'gallery'
+		};
+	});
+
+	app.directive('productTitle', function() {
+		return {
+			restrict: 'E',
+			templateUrl: 'product-title.html'
+		};
+	});
+
+	app.controller('PanelController', function() {
+		this.tab = 1;
+		
+		this.selectTab = function(setTab) {
+			this.tab = setTab;
+		};
+		this.isSelected = function(checkTab) {
+			return this.tab === checkTab;
+		};
+	});
+
+
+	app.directive('productPanels', function() {
+		return {
+			restrict: 'E',
+			templateUrl: 'product-panels.html'
+		};
+	});
+
+	app.controller('ReviewController', function() {
+		this.review = {};
+
+		this.addReview = function(product) {
+			product.reviews.push(this.review);
+			product.reviews.push(this.review.createdOn = Date.now());
+			this.review = {};
+		};
+	});
+
+	var gems = [
 			{
 				name: 'Dodecahedron',
 				price: 299999.95,
@@ -18,10 +70,11 @@
 					createdOn: ''
 				}],
 				images: [
-					{
-					full: 'images/',
-					thumb: 'images/gem-01.gif'
-					}
+					'images/gem-01.gif',
+					'images/gem-02.gif',
+					'images/gem-03.gif',
+					'images/gem-04.gif',
+					'images/gem-05.gif'
 				]
 			},
 			{
@@ -40,112 +93,12 @@
 					}
 				],
 				images: [
-					{
-					full: 'images/',
-					thumb: 'images/gem-02.gif'
-					}
-				]
-			},
-			{
-				name: 'Ruby',
-				price: 199999.95,
-				description: 'The classicly illustrious Ruby.',
-				canPurchase: true,
-				soldOut: false,
-				specification:'Clear',
-				reviews: [
-					{
-					stars: 4,
-					body: 'Such a classic gem!',
-					author:"email@email.com"
-					}
-				],
-				images: [
-					{
-					full: 'images/',
-					thumb: 'images/gem-03.gif'
-					}
-				]
-			},
-			{
-				name: 'Azurite',
-				price: 39999.95,
-				description: 'The semi-precious gemstone due to it\'s royal blue color.',
-				canPurchase: true,
-				soldOut: true,
-				specification:'Clear',
-				reviews: [
-					{
-					stars: 5,
-					body: 'Such a precious gem!',
-					author:"email@email.com",
-					createdOn: ''
-					}
-				],
-				images: [
-					{
-					full: 'images/',
-					thumb: 'images/gem-04.gif'
-					}
-				]
-			},
-			{
-				name: 'Hexagem',
-				price: 699999.95,
-				description: 'The super precious very rare gemstone.',
-				canPurchase: true,
-				soldOut: true,
-				reviews: [
-					{
-					stars: 5,
-				 	body: 'Such a precious super gem!',
-				 	author:"email@email.com",
-				 	createdOn: ''
-				 	},
-				 	{
-				 	stars: 5,
-				 	body: "Such an precious, precious gem!",
-				 	author: 'email1@email2.com',
-				 	createdOn: ''
-				 	},
-				 	],
-				images: [
-					{
-					full: 'images/',
-					thumb: 'images/gem-05.gif'
-					}
+					'images/gem-06.gif',
+					'images/gem-07.gif',
+					'images/gem-08.gif',
+					'images/gem-09.gif',
+					'images/gem-10.gif'
 				]
 			}
 		];
-	});
-
-	app.controller('PanelController', function(){
-		this.tab = 1;
-		
-		this.selectTab = function(setTab) {
-			this.tab = setTab;
-		};
-		this.isSelected = function(checkTab) {
-			return this.tab === checkTab;
-		};
-	});
-
-	app.controller('ReviewController', function() {
-		this.review = {};
-
-		this.addReview = function(product) {
-			product.reviews.push(this.review);
-			product.reviews.push(this.review.createdOn = Date.now());
-			this.review = {};
-		};
-	});
-
-	app.directive('productTitle', function() {
-		return {
-			restrict: 'E',
-			templateUrl: 'product-title.html'
-		};
-	});
-
-	var gems = uninitialized;
 })();
