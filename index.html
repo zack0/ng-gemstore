@@ -10,20 +10,23 @@
 			<h1>Precious Crafted Gems</h1>
 			<h2>- an Angular store -</h2>
 		</header>
-	<div class="list-group">
-		<div class="list-group-item" ng-repeat="product in store.products | orderBy:'-price'">
-			<product-title></product-title>			
-
-			<product-gallery></product-gallery>
-			
-			<button type="button" class="btn btn-primary" ng-show="product.canPurchase" ng-hide="product.soldOut"> Add to Cart </button>
-			<button type="button" class="btn btn-warning" ng-show="product.soldOut"> Backorder </button>
-			
-			<product-panels ng-controller="PanelController as panel"></product-panels>
-				
-
+		<!-- Products Container -->
+		<div class="list-group">
+			<!-- Product Container -->
+			<div class="list-group-item" ng-repeat="product in store.products | orderBy:'-price'">
+				<product-title></product-title>			
+				<!-- Image Gallery -->
+				<product-gallery></product-gallery>
+				<!-- Add to Cart/Backorder Buttons -->
+				<button type="button" class="btn btn-primary" ng-show="product.canPurchase" ng-hide="product.soldOut"> Add to Cart </button>
+				<button type="button" class="btn btn-warning" ng-show="product.soldOut"> Backorder </button>
+				<!-- Product Tabs -->
+				<!--
+				<product-panels ng-controller="PanelController as panel"></product-panels>
+				-->
+				<product-tabs></product-tabs>
+			</div>
 		</div>
-	</div>
 
 		<script type="text/javascript" src="scripts/angular.min.js"></script>
 		<script type="text/javascript" src="app.js"></script>
