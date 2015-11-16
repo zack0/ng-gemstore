@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html ng-app="store">
 	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="style/bootstrap.min.css" />
 		<link rel="stylesheet" href="style/style.css" />
 	</head>
 	<body ng-controller="StoreController as store">
-		<!-- Store Header -->
-		<header>
-			<h1>Precious Crafted Gems</h1>
-			<h2>- an Angular store -</h2>
-		</header>
-		<!-- Products Container -->
-		<div class="list-group">
+	<div class="container">
+		<div class="row">
+			<!-- Store Header -->
+			<header>
+				<h1>Precious Gems</h1>
+			</header>
+			<!-- Products Container -->
+			<div class="list-group">
 			<!-- Product Container -->
-			<div class="list-group-item" ng-repeat="product in store.products | orderBy:'-price'">
-				<product-title></product-title>			
-				<!-- Image Gallery -->
-				<product-gallery></product-gallery>
-				<!-- Product Tabs -->
-				<product-tabs></product-tabs>
+				<div class="list-group-item" ng-repeat="product in store.products | orderBy:'-price'">
+					<product-title></product-title>			
+					<!-- Image Gallery -->
+					<div class="jumbotron" style="text-align:center;">
+						<product-gallery></product-gallery>
+					</div>
+					<!-- Product Tabs -->
+					<div class="well">
+						<product-tabs></product-tabs>
+					</div>
+				</div>
 			</div>
 		</div>
-		<!-- Scripts and App -->
-		<script type="text/javascript" src="scripts/angular.min.js"></script>
-		<script type="text/javascript" src="app.js"></script>
-		<script type="text/javascript" src="products.js"></script>
+	</div>
+	<!-- Scripts -->
+	<script type="text/javascript" src="scripts/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="products.js"></script>
 	</body>
 </html>

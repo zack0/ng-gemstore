@@ -24,3 +24,11 @@
 	});
 
 })();
+
+// The flatlanders need a store so they can sell their gems and more
+// They need it really quick angular will do the trick
+// Directives set the stage in your HTML page
+// Controllers give your app the behavior that it lacks
+// Write Expressions so that you can add your data to the view
+// And modules make connections with dependency injection
+// You're a scripting conneseiur when shaping up with Angular.js
