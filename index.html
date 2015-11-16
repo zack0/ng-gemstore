@@ -17,18 +17,13 @@
 				<product-title></product-title>			
 				<!-- Image Gallery -->
 				<product-gallery></product-gallery>
-				<!-- Add to Cart/Backorder Buttons -->
-				<button type="button" class="btn btn-primary" ng-show="product.canPurchase" ng-hide="product.soldOut"> Add to Cart </button>
-				<button type="button" class="btn btn-warning" ng-show="product.soldOut"> Backorder </button>
 				<!-- Product Tabs -->
-				<!--
-				<product-panels ng-controller="PanelController as panel"></product-panels>
-				-->
 				<product-tabs></product-tabs>
 			</div>
 		</div>
-
+		<!-- Scripts and App -->
 		<script type="text/javascript" src="scripts/angular.min.js"></script>
 		<script type="text/javascript" src="app.js"></script>
+		<script type="text/javascript" src="products.js"></script>
 	</body>
 </html>
