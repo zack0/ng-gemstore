@@ -14,9 +14,7 @@
 		<h4>Description</h4>
 		<p>{{product.description}}</p>
 	</div>
-	<div class="panel" ng-show="tab.isSelected(2)">
-		<h4>Specifications</h4>
-		<p>{{product.specification}}</p>
+	<div product-specs class="panel" ng-show="tab.isSelected(2)">
 	</div>
 	<div class="panel" ng-show="tab.isSelected(3)" ng-include="'product-reviews.html'">
 	</div>

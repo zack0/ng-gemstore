@@ -1,4 +1,5 @@
 (function() {
+
 	var app = angular.module('store-products', []);
 		app.directive('productGallery', function() {
 		return {
@@ -17,6 +18,13 @@
 		return {
 			restrict: 'E',
 			templateUrl: 'product-title.html'
+		};
+	});
+
+	app.directive('productSpecs', function() {
+		return {
+			restrict: 'A',
+			templateUrl: 'product-specs.html'
 		};
 	});
 
