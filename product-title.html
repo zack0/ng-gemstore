@@ -1,1 +1,7 @@
-<h3>{{product.name}}<em class="pull-right"> {{product.price | currency}} </em></h3>
+<h3>
+{{product.name}}<em class="pull-right">{{product.price | currency}}</em>
+<br />
+<!-- Add to Cart/Backorder Buttons -->
+<button type="button" class="btn btn-primary pull-right" ng-show="product.canPurchase" ng-hide="product.soldOut"> Add to Cart </button>
+<button type="button" class="btn btn-warning pull-right" ng-show="product.soldOut"> Backorder </button>
+</h3>

@@ -6,6 +6,12 @@
 	border-color: #78FA89;
 }
 
+ul.img-thumbnails {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
 li.small-image {
 	width: 34px;
 	height: 34px;
